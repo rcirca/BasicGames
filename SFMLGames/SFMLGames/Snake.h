@@ -24,10 +24,29 @@ public:
 	int getScore();
 	void increaseScore();
 	bool hasLost();
+
 	void lose();
 	void toggleLost();
 
+	void extend();
+	void reset();
 
+	void move();
+	void tick();
+	void cut();
 	
+	void draw(sf::RenderWindow pRenderWindow);
+
+private:
+	void checkCollision();
+	
+	sf::RectangleShape _rectangeBody;
+	SnakeContainer _snakeBody;
+	Direction _direction;
+	int _size;
+	int _speed;
+	int _lives;
+	int _score;
+	bool _lost;
 };
 
