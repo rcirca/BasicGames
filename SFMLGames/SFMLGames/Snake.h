@@ -17,13 +17,13 @@ public:
 	~Snake();
 
 	void setDirection(Direction pDirection);
-	Direction getDirection();
-	int getSpeed();
+	Direction getDirection() const;
+	int getSpeed() const;
 	sf::Vector2i getPosition();
-	int getLives();
-	int getScore();
+	int getLives() const;
+	int getScore() const;
 	void increaseScore();
-	bool hasLost();
+	bool hasLost() const;
 
 	void lose();
 	void toggleLost();
@@ -33,7 +33,7 @@ public:
 
 	void move();
 	void tick();
-	void cut();
+	void cut(int pSegments);
 	
 	void draw(sf::RenderWindow pRenderWindow);
 
