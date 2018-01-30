@@ -93,11 +93,3 @@ void Window::draw(sf::Drawable& pDrawable)
 {
 	_window.draw(pDrawable);
 }
-
-
-
-
-
-
-
-

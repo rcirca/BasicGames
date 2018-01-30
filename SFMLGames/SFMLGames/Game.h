@@ -1,6 +1,8 @@
 #pragma once
 #include "Window.h"
 #include <SFML/Graphics.hpp>
+#include "Snake.h"
+#include "SnakeWorld.h"
 
 class Game
 {
@@ -17,7 +19,9 @@ public:
 
 private:
 
+	SnakeWorld _snakeWorld;
+	Snake _snake;
 	Window _window;
 	sf::Clock _clock;
-	sf::Time _elapsedTime;
+	float _elapsedTime;
 };

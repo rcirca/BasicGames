@@ -16,10 +16,22 @@ void Snake::setDirection(Direction pDirection)
 	_direction = pDirection;
 }
 
-Direction Snake::getDirection() const
+Direction Snake::getExactDirection() const
 {
-	return _direction;
+	if (_snakeBody.size() <= 1)
+		return None;
+
+	auto& head = _snakeBody[0];
+	auto& neck = _snakeBody[1];
+
+	if (head.position.x == neck.position.x)
+		return (head.position.y > neck.position.y) ? Down : Up;
+	if (head.position.y == neck.position.y)
+		return (head.position.x > neck.position.x) ? Right : Left;
+
+	return None;
 }
+
 
 int Snake::getSpeed() const
 {
@@ -159,7 +171,7 @@ void Snake::cut(int pSegments)
 		lose();
 }
 
-void Snake::draw(sf::RenderWindow pRenderWindow)
+void Snake::draw(sf::RenderWindow& pRenderWindow)
 {
 	if (_snakeBody.empty())
 		return;

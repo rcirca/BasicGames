@@ -17,7 +17,7 @@ public:
 	~Snake();
 
 	void setDirection(Direction pDirection);
-	Direction getDirection() const;
+	Direction getExactDirection() const;
 	int getSpeed() const;
 	sf::Vector2i getPosition();
 	int getLives() const;
@@ -35,7 +35,7 @@ public:
 	void tick();
 	void cut(int pSegments);
 	
-	void draw(sf::RenderWindow pRenderWindow);
+	void draw(sf::RenderWindow& pRenderWindow);
 
 private:
 	void checkCollision();
