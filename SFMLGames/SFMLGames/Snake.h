@@ -3,7 +3,7 @@
 struct SnakeSegment
 {
 	SnakeSegment(int x, int y) : position(x,y){ }
-	sf::Vector2f position;
+	sf::Vector2i position;
 };
 
 
