@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Snake.h"
 #include "SnakeWorld.h"
+#include "TextBox.h"
 
 class Game
 {
@@ -21,6 +22,7 @@ private:
 
 	SnakeWorld _snakeWorld;
 	Snake _snake;
+	TextBox _textBox;
 	Window _window;
 	sf::Clock _clock;
 	float _elapsedTime;

@@ -1,5 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "TextBox.h"
+class TextBox;
+
 struct SnakeSegment
 {
 	SnakeSegment(int x, int y) : position(x,y){ }
@@ -14,6 +17,7 @@ class Snake
 {
 public:
 	Snake(int pBlockSize);
+	Snake(int pBlockSize, TextBox* pTextBox);
 	~Snake();
 
 	void setDirection(Direction pDirection);
@@ -40,6 +44,7 @@ public:
 private:
 	void checkCollision();
 	
+	TextBox* _log;
 	sf::RectangleShape _rectangeBody;
 	SnakeContainer _snakeBody;
 	Direction _direction;

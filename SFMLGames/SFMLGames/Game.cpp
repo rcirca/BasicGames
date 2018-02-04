@@ -1,12 +1,15 @@
 #include "Game.h"
 
 Game::Game() : _snakeWorld(sf::Vector2u(800,600)), 
-_snake(_snakeWorld.getBlockSize()), 
+_snake(_snakeWorld.getBlockSize(), &_textBox), 
 _window("SNEK", sf::Vector2u(800, 600))
 {
 	restartClock();
 	srand(time(nullptr));
 	_elapsedTime = 0.0f;
+	_textBox.setup(5, 14, 350, sf::Vector2f(225, 0));
+	_textBox.add("Seeded random number generator with " + std::to_string(time(NULL)));
+	_textBox.add("Score: " + std::to_string(_snake.getScore()));
 }
 
 Game::~Game()
@@ -54,6 +57,7 @@ void Game::render()
 	_window.beginDraw();
 	_snakeWorld.draw(*_window.getRenderWindow());
 	_snake.draw(*_window.getRenderWindow());
+	_textBox.draw(*_window.getRenderWindow());
 	_window.endDraw();
 }
 

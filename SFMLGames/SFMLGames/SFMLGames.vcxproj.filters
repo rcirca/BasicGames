@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{3ba4d3ae-e8ec-4c30-8b77-3c5ebfe5cd89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{5c3890b9-9038-4632-bde9-69fb343eb608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SnakeSource">
+      <UniqueIdentifier>{6938c5cf-4705-4b41-9bdb-54e6d71b7e67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SnakeHeader">
+      <UniqueIdentifier>{0da48a44-f7ca-4c8e-8b1c-1e7a6d8ae03b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -24,11 +36,14 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
     <ClCompile Include="Snake.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SnakeSource</Filter>
     </ClCompile>
     <ClCompile Include="SnakeWorld.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\SnakeSource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,11 +53,14 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
     <ClInclude Include="Snake.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\SnakeHeader</Filter>
     </ClInclude>
     <ClInclude Include="SnakeWorld.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\SnakeHeader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

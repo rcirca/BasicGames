@@ -7,6 +7,14 @@ Snake::Snake(int pBlockSize)
 	reset();
 }
 
+Snake::Snake(int pBlockSize, TextBox* pTextBox)
+{
+	_size = pBlockSize;
+	_log = pTextBox;
+	_rectangeBody.setSize(sf::Vector2f(_size - 1, _size - 1));
+	reset();
+}
+
 Snake::~Snake()
 {
 }
@@ -55,7 +63,8 @@ int Snake::getScore() const
 
 void Snake::increaseScore()
 {
-	_score += 100;
+	_score += 10;
+	_log->add("Score: " + std::to_string(_score));
 }
 
 bool Snake::hasLost() const
@@ -65,6 +74,7 @@ bool Snake::hasLost() const
 
 void Snake::lose()
 {
+	_log->add("GAME OVER! Score: " + std::to_string(_score));
 	_lost = true;
 }
 
