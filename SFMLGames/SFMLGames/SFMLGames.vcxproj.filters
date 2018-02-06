@@ -25,6 +25,18 @@
     <Filter Include="Header Files\SnakeHeader">
       <UniqueIdentifier>{0da48a44-f7ca-4c8e-8b1c-1e7a6d8ae03b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{c60c6950-7870-4e37-9154-bb4572d49195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities\Event Manager">
+      <UniqueIdentifier>{2aa4c2bd-a016-4862-bf76-9e68657f7d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{5e01f854-7028-428c-a33c-1fe03f86bacc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities\Event Manager">
+      <UniqueIdentifier>{381e8cbe-24a3-4db5-94ca-7ad10d64cd38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -45,6 +57,9 @@
     <ClCompile Include="SnakeWorld.cpp">
       <Filter>Source Files\SnakeSource</Filter>
     </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Source Files\Utilities\Event Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -61,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="SnakeWorld.h">
       <Filter>Header Files\SnakeHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files\Utilities\Event Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
