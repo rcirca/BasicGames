@@ -6,14 +6,14 @@ Window::Window()
 	setup("Window", sf::Vector2u(640, 480));
 }
 
-Window::Window(const std::string pTitle, const sf::Vector2u& pSize)
+Window::Window(const std::string pTitle, const sf::Vector2u& pSize) : _eventManager("configs/snakeKeys.cfg.txt")
 {
 	setup(pTitle, pSize);
 }
 
 Window::~Window()
 {
-	destroy();
+	_window.close();
 }
 
 void Window::setup(const std::string& pTitle, const sf::Vector2u& pSize)
@@ -24,7 +24,7 @@ void Window::setup(const std::string& pTitle, const sf::Vector2u& pSize)
 	_isDone = false;
 	_isFullScreen = false;
 	_isFocused = true;
-
+	
 	_eventManager.addCallBack("Fullscreen_toggle", &Window::toggleFullScreen, this);
 	_eventManager.addCallBack("Window_close", &Window::close, this);
 
@@ -33,13 +33,11 @@ void Window::setup(const std::string& pTitle, const sf::Vector2u& pSize)
 
 void Window::create()
 {
-	auto style = (_isFullScreen ? sf::Style::Fullscreen : sf::Style::Default);
-	_window.create({ _windowSize.x, _windowSize.y, 32 }, _windowTitle, style);
-}
+	auto style = sf::Style::Default;
+	if (_isFullScreen)
+		style = sf::Style::Fullscreen;
 
-void Window::destroy()
-{
-	_window.close();
+	_window.create(sf::VideoMode(_windowSize.x, _windowSize.y, 32), _windowTitle, style);
 }
 
 void Window::update()
@@ -66,7 +64,7 @@ void Window::update()
 void Window::toggleFullScreen(EventDetails* pDetails)
 {
 	_isFullScreen = !_isFullScreen;
-	destroy();
+	_window.close();
 	create();
 }
 
@@ -105,6 +103,16 @@ sf::Vector2u Window::getWindowSize() const
 void Window::draw(sf::Drawable& pDrawable)
 {
 	_window.draw(pDrawable);
+}
+
+bool Window::isFocused() const
+{
+	return _isFocused;
+}
+
+EventManager * Window::getEventManager()
+{
+	return &_eventManager;
 }
 
 void Window::close(EventDetails* pDetails)

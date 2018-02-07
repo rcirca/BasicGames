@@ -29,13 +29,12 @@ public:
 
 	void draw(sf::Drawable& pDrawable);
 
-	bool isFocused();
+	bool isFocused() const;
 	EventManager* getEventManager();
 	void close(EventDetails* pDetails = nullptr);
 
 private:
 	void setup(const std::string& pTitle, const sf::Vector2u& pSize);
-	void destroy();
 	void create();
 
 	EventManager _eventManager;

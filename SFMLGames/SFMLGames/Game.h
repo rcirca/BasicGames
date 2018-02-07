@@ -13,7 +13,7 @@ public:
 
 	sf::Time getElapsed() const;
 	void restartClock();
-	void handleInput();
+	void Game::handleInput(EventDetails* pDetails);
 	void update();
 	void render();
 	Window* getWindow();

@@ -5,6 +5,11 @@ EventManager::EventManager() : _hasFocus(true)
 	loadBindings();
 }
 
+EventManager::EventManager(std::string pCfgFile) : _hasFocus(true)
+{
+	loadBindings(pCfgFile);
+}
+
 EventManager::~EventManager()
 {
 	for(auto& itr : _bindings)
@@ -80,18 +85,24 @@ void EventManager::handleEvent(sf::Event& pEvent)
 				}
 				else if (sfmlEvent == EventType::TextEntered)
 					bind->_details._textEntered = pEvent.text.unicode;
+
+				++(bind->_countOfEvents);
 			}
-			++(bind->_countOfEvents);
 		}
 	}
 }
 
-void EventManager::loadBindings()
+void EventManager::loadBindings(std::string pCfgFile)
 {
 	std::string delimiter = ":";
 
 	std::ifstream bindings;
-	bindings.open("configs/keys.cfg");
+	
+	if (pCfgFile.empty()) 
+		bindings.open("configs/keys.cfg.txt");
+	else 
+		bindings.open(pCfgFile);
+
 	if (!bindings.is_open()) 
 	{ 
 		std::cout << "Failed to load keys.cfg!" << std::endl; 
@@ -99,17 +110,23 @@ void EventManager::loadBindings()
 	}
 
 	std::string line;
-	while (std::getline(bindings, line)) {
+	while (std::getline(bindings, line)) 
+	{
 		std::stringstream keystream(line);
 		std::string callbackName;
 		keystream >> callbackName;
 		auto* bind = new Binding(callbackName);
-		while (!keystream.eof()) {
+		while (!keystream.eof()) 
+		{
 			std::string keyval;
 			keystream >> keyval;
 			auto start = 0;
 			int end = keyval.find(delimiter);
-			if (end == std::string::npos) { delete bind; bind = nullptr; break; }
+			if (end == std::string::npos)
+			{
+				delete bind; 
+				bind = nullptr; break;
+			}
 			auto type = EventType(stoi(keyval.substr(start, end - start)));
 			auto code = stoi(keyval.substr(end + delimiter.length(),
 				keyval.find(delimiter, end + delimiter.length())));
@@ -119,7 +136,9 @@ void EventManager::loadBindings()
 			bind->BindEvent(type, eventInfo);
 		}
 
-		if (!addBinding(bind)) { delete bind; }
+		if (!addBinding(bind))
+			delete bind;
+
 		bind = nullptr;
 	}
 	bindings.close();
@@ -138,7 +157,8 @@ void EventManager::update()
 	for (auto& bindItr : _bindings) {
 		auto* bind = bindItr.second;
 		for (auto& eventItr : bind->_events) {
-			switch (eventItr.first) {
+			switch (eventItr.first) 
+			{
 			case(EventType::Keyboard):
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(eventItr.second._code))) {
 					if (bind->_details._keyCode != -1) {
@@ -158,7 +178,8 @@ void EventManager::update()
 			case(EventType::Joystick):
 				// Up for expansion.
 				break;
-			default: ;
+			default: 
+				;
 			}
 		}
 

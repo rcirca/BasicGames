@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Utilities\Event Manager">
       <UniqueIdentifier>{381e8cbe-24a3-4db5-94ca-7ad10d64cd38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Games">
+      <UniqueIdentifier>{08d1135c-2a9a-425a-a5ee-f765f34a3c9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="EventManager.cpp">
       <Filter>Source Files\Utilities\Event Manager</Filter>
     </ClCompile>
+    <ClCompile Include="GameMushroom.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -79,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>Header Files\Utilities\Event Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMushroom.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

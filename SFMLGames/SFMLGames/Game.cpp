@@ -10,6 +10,11 @@ _window("SNEK", sf::Vector2u(800, 600))
 	_textBox.setup(5, 14, 350, sf::Vector2f(225, 0));
 	_textBox.add("Seeded random number generator with " + std::to_string(time(NULL)));
 	_textBox.add("Score: " + std::to_string(_snake.getScore()));
+
+	_window.getEventManager()->addCallBack("MoveUp", &Game::handleInput, this);
+	_window.getEventManager()->addCallBack("MoveDown", &Game::handleInput, this);
+	_window.getEventManager()->addCallBack("MoveLeft", &Game::handleInput, this);
+	_window.getEventManager()->addCallBack("MoveRight", &Game::handleInput, this);
 }
 
 Game::~Game()
@@ -18,21 +23,21 @@ Game::~Game()
 }
 
 
-void Game::handleInput()
+void Game::handleInput(EventDetails* pDetails)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)
+	if (pDetails->_name.compare("MoveUp") == 0
 		&& _snake.getExactDirection() != Direction::Down) {
 		_snake.setDirection(Direction::Up);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)
+	else if (pDetails->_name.compare("MoveDown") == 0
 		&& _snake.getExactDirection() != Direction::Up) {
 		_snake.setDirection(Direction::Down);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)
+	else if (pDetails->_name.compare("MoveLeft") == 0
 		&& _snake.getExactDirection() != Direction::Right) {
 		_snake.setDirection(Direction::Left);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)
+	else if (pDetails->_name.compare("MoveRight") == 0
 		&& _snake.getExactDirection() != Direction::Left) {
 		_snake.setDirection(Direction::Right);
 	}

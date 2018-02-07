@@ -82,6 +82,7 @@ class EventManager
 {
 public:
 	EventManager();
+	EventManager(std::string pCfgFile);
 	~EventManager();
 
 	bool addBinding(Binding *pBinding);
@@ -110,7 +111,7 @@ public:
 	}
 
 private:
-	void loadBindings();
+	void loadBindings(std::string pCfgFile = "");
 
 	Bindings _bindings;
 	Callbacks _callbacks;

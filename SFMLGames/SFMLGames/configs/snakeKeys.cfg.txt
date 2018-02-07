@@ -1,0 +1,5 @@
+Window_close 0:0
+MoveUp 5:22
+MoveDown 5:18
+MoveLeft 5:0
+MoveRight 5:3
