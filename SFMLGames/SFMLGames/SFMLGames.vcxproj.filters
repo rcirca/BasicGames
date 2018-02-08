@@ -40,12 +40,12 @@
     <Filter Include="Source Files\Games">
       <UniqueIdentifier>{08d1135c-2a9a-425a-a5ee-f765f34a3c9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities\StateManager">
+      <UniqueIdentifier>{398c7e83-9080-4b50-805d-bb64e66fd86a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
@@ -64,6 +64,9 @@
       <Filter>Source Files\Utilities\Event Manager</Filter>
     </ClCompile>
     <ClCompile Include="GameMushroom.cpp">
+      <Filter>Source Files\Games</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSnake.cpp">
       <Filter>Source Files\Games</Filter>
     </ClCompile>
   </ItemGroup>
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="GameMushroom.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
