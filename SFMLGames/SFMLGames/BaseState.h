@@ -10,20 +10,20 @@ public:
 		_transparent(false), _transcendent(false) {}
 	virtual ~BaseState() {}
 
-	virtual void OnCreate() = 0;
-	virtual void OnDestroy() = 0;
+	virtual void onCreate() = 0;
+	virtual void onDestroy() = 0;
 
-	virtual void Activate() = 0;
-	virtual void Deactivate() = 0;
+	virtual void activate() = 0;
+	virtual void deactivate() = 0;
 
-	virtual void Update(const sf::Time& pTime) = 0;
-	virtual void Draw() = 0;
+	virtual void update(const sf::Time& pTime) = 0;
+	virtual void draw() = 0;
 
-	void SetTransparent(const bool& pTransparent) { _transparent = pTransparent; }
-	bool IsTransparent()const { return _transparent; }
-	void SetTranscendent(const bool& pTranscendence) { _transcendent = pTranscendence; }
-	bool IsTranscendent()const { return _transcendent; }
-	StateManager* GetStateManager() { return _stateMgr; }
+	void setTransparent(const bool& pTransparent) { _transparent = pTransparent; }
+	bool isTransparent()const { return _transparent; }
+	void setTranscendent(const bool& pTranscendence) { _transcendent = pTranscendence; }
+	bool isTranscendent()const { return _transcendent; }
+	StateManager* getStateManager() { return _stateMgr; }
 
 protected:
 	StateManager* _stateMgr;

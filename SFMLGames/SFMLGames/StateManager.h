@@ -2,6 +2,10 @@
 #include "EventManager.h"
 #include "SharedContext.h"
 #include "BaseState.h"
+#include "State_Main.h"
+#include "State_Intro.h"
+#include "State_Game.h"
+#include "State_Paused.h"
 
 enum class StateType
 {
@@ -37,15 +41,15 @@ private:
 
 	template<class T>
 	void RegisterState(const StateType& pType) {
-		m_stateFactory[pTtype] = [this]() -> BaseState*
+		_stateFactory[pTtype] = [this]() -> BaseState*
 		{
 			return new T(this);
 		};
 	}
 
 	// Members.
-	SharedContext* m_shared;
-	StateContainer m_states;
-	TypeContainer m_toRemove;
-	StateFactory m_stateFactory;
+	SharedContext* _shared;
+	StateContainer _states;
+	TypeContainer _toRemove;
+	StateFactory _stateFactory;
 };
