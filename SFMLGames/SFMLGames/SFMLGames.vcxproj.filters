@@ -43,6 +43,9 @@
     <Filter Include="Header Files\Utilities\StateManager">
       <UniqueIdentifier>{398c7e83-9080-4b50-805d-bb64e66fd86a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utilities\StateManager">
+      <UniqueIdentifier>{bba96af1-ffff-43b5-8c94-891f59b5dceb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="GameSnake.cpp">
       <Filter>Source Files\Games</Filter>
     </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files\Utilities\StateManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -93,6 +99,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedContext.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Intro.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Game.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Main.h">
+      <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="State_Paused.h">
       <Filter>Header Files\Utilities\StateManager</Filter>
     </ClInclude>
   </ItemGroup>

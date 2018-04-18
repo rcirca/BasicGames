@@ -1,68 +1,51 @@
 #pragma once
-#include <SFML/System.hpp>
 #include "EventManager.h"
-#include "Window.h"
+#include "SharedContext.h"
+#include "BaseState.h"
 
 enum class StateType
 {
 	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
 };
 
-struct SharedContext
-{
-	SharedContext() :_window(nullptr), _eventManager(nullptr){}
-	Window* _window;
-	EventManager* _eventManager;
-};
-class StateManager;
 
-class BaseState
+using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
+using TypeContainer = std::vector<StateType>;
+using StateFactory = std::unordered_map<StateType, std::function<BaseState*(void)>>;
+
+class StateManager 
 {
-	friend class StateManager;
 public:
-	BaseState(StateManager* pStateManager)
-	: _stateManager(pStateManager), _transparent(false), _transcendent(false)
-	{
-		
-	}
-	virtual ~BaseState(){}
+	StateManager(SharedContext* pShared);
+	~StateManager();
 
-	virtual void onCreate() = 0;
-	virtual void onDestroy() = 0;
+	void Update(const sf::Time& pTime);
+	void Draw();
 
-	virtual void activate() = 0;
-	virtual void deactivate() = 0;
+	void ProcessRequests();
 
-	virtual void update(const sf::Time& pTime) = 0;
-	virtual void draw() = 0;
+	SharedContext* GetContext();
+	bool HasState(const StateType& pType);
 
-	void setTransparent(const bool& pTransparent)
-	{
-		_transparent = pTransparent;
-	}
+	void SwitchTo(const StateType& pType);
+	void Remove(const StateType& pType);
 
-	bool isTransparent() const
-	{
-		return _transparent;
-	}
+private:
+	// Methods.
+	void CreateState(const StateType& pType);
+	void RemoveState(const StateType& pType);
 
-	void setTranscendent(const bool& pTranscendent)
-	{
-		_transcendent = pTranscendent;
+	template<class T>
+	void RegisterState(const StateType& pType) {
+		m_stateFactory[pTtype] = [this]() -> BaseState*
+		{
+			return new T(this);
+		};
 	}
 
-	bool isTranscendent() const
-	{
-		return _transcendent;
-	}
-
-	StateManager* getStateManager()
-	{
-		return _stateManager;
-	}
-
-protected:
-	StateManager* _stateManager;
-	bool _transcendent;
-	bool _transparent;
+	// Members.
+	SharedContext* m_shared;
+	StateContainer m_states;
+	TypeContainer m_toRemove;
+	StateFactory m_stateFactory;
 };
