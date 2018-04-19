@@ -75,8 +75,11 @@ struct Binding
 	EventDetails _details;
 };
 
+enum class StateType;
+
 using Bindings = std::unordered_map<std::string, Binding* >;
-using Callbacks = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+using CallBackContainer = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+using Callbacks = std::unordered_map<StateType, CallBackContainer>;
 
 class EventManager
 {
@@ -87,19 +90,27 @@ public:
 
 	bool addBinding(Binding *pBinding);
 	bool removeBindings(std::string pName);
+
+	void setCurrentState(StateType pType);
 	void setFocus(const bool& pFocus);
 
 	template<class T> // has to be defined in the header
-	bool addCallBack(const std::string& pName,
+	bool addCallBack(StateType pState, const std::string& pName,
 		void(T::*pFunc)(EventDetails*), T* pInstance)
 	{
+		auto itr = _callbacks.emplace(pState, CallBackContainer()).first;
 		auto temp = std::bind(pFunc, pInstance, std::placeholders::_1);
-		return _callbacks.emplace(pName, temp).second;
+		return itr->second.emplace(pName, temp).second;
 	}
 
-	void removeCallback(const std::string& pName)
+	bool removeCallback(StateType pState, const std::string& pName)
 	{
-		_callbacks.erase(pName);
+		auto itr = _callbacks.find(pState);
+		if (itr == _callbacks.end())
+			return false;
+		auto itr2 = itr->second.find(pName);
+		if (itr2 == itr->second.end())
+			return false;
 	}
 
 	void handleEvent(sf::Event& pEvent);
@@ -113,6 +124,7 @@ public:
 private:
 	void loadBindings(std::string pCfgFile = "");
 
+	StateType _currentStateType;
 	Bindings _bindings;
 	Callbacks _callbacks;
 	bool _hasFocus;

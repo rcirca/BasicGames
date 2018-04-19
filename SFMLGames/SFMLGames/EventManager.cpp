@@ -144,6 +144,11 @@ void EventManager::loadBindings(std::string pCfgFile)
 	bindings.close();
 }
 
+void EventManager::setCurrentState(StateType pType)
+{
+	_currentStateType = pType;
+}
+
 void EventManager::setFocus(const bool& pFocus)
 {
 	_hasFocus = pFocus;
@@ -154,41 +159,51 @@ void EventManager::update()
 	if (!_hasFocus)
 		return;
 
-	for (auto& bindItr : _bindings) {
-		auto* bind = bindItr.second;
-		for (auto& eventItr : bind->_events) {
+	for (auto& bindItr : _bindings) 
+	{
+		auto bind = bindItr.second;
+		for (auto& eventItr : bind->_events) 
+		{
 			switch (eventItr.first) 
 			{
 			case(EventType::Keyboard):
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(eventItr.second._code))) {
-					if (bind->_details._keyCode != -1) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(eventItr.second._code))) 
+				{
+					if (bind->_details._keyCode != -1)
 						bind->_details._keyCode = eventItr.second._code;
-					}
+
 					++(bind->_countOfEvents);
 				}
 				break;
 			case(EventType::Mouse):
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button(eventItr.second._code))) {
-					if (bind->_details._keyCode != -1) {
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button(eventItr.second._code))) 
+				{
+					if (bind->_details._keyCode != -1)
 						bind->_details._keyCode = eventItr.second._code;
-					}
+
 					++(bind->_countOfEvents);
 				}
 				break;
 			case(EventType::Joystick):
 				// Up for expansion.
 				break;
-			default: 
-				;
+			default: ;
 			}
 		}
 
-		if (bind->_events.size() == bind->_countOfEvents) {
-			auto callItr = _callbacks.find(bind->_name);
-			if (callItr != _callbacks.end()) {
-				callItr->second(&bind->_details);
+		if (bind->_events.size() == bind->_countOfEvents) 
+		{
+			auto stateCallbacks = _callbacks.find(_currentStateType);
+			auto otherCallbacks = _callbacks.find(StateType(0));
+
+			if (stateCallbacks != _callbacks.end())
+			{
+				auto callItr = otherCallbacks->second.find(bind->_name);
+				if (callItr != otherCallbacks->second.end())
+					callItr->second(&bind->_details);
 			}
 		}
+
 		bind->_countOfEvents = 0;
 		bind->_details.clear();
 	}
