@@ -10,7 +10,7 @@ GameMushroom::GameMushroom() : _window("Chapter 4", sf::Vector2u(800, 600))
 	_sprite.setOrigin(_texture.getSize().x / 2, _texture.getSize().y / 2);
 	_sprite.setPosition(0, 0);
 
-	_window.getEventManager()->addCallBack("Move", &GameMushroom::moveSprite, this);
+	_window.getEventManager()->addCallBack(StateType(0), "Move", &GameMushroom::moveSprite, this);
 }
 
 GameMushroom::~GameMushroom() {}
