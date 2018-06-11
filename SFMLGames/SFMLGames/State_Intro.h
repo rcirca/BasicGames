@@ -14,7 +14,7 @@ public:
 	void activate();
 	void deactivate();
 
-	void update();
+	void update(const sf::Time& pTime);
 	void draw();
 
 	void continueWith(EventDetails* pDetails);

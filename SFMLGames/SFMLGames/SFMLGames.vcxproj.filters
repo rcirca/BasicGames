@@ -75,6 +75,9 @@
     <ClCompile Include="StateManager.cpp">
       <Filter>Source Files\Utilities\StateManager</Filter>
     </ClCompile>
+    <ClCompile Include="State_Intro.cpp">
+      <Filter>Source Files\Utilities\StateManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">

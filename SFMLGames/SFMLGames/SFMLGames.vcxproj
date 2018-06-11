@@ -124,6 +124,7 @@
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SnakeWorld.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="State_Intro.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

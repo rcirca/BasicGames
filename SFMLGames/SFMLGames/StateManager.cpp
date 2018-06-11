@@ -30,7 +30,7 @@ void StateManager::Update(const sf::Time& pTime)
 		{
 			if (itr != _states.end())
 			{
-				if (!itr->second->isTranscendent)
+				if (!itr->second->isTranscendent())
 					break;
 			}
 			--itr;
@@ -152,3 +152,4 @@ void StateManager::RemoveState(const StateType & pType)
 		}
 	}
 }
+

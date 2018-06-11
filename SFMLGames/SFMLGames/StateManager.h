@@ -40,12 +40,14 @@ private:
 	void RemoveState(const StateType& pType);
 
 	template<class T>
-	void RegisterState(const StateType& pType) {
-		_stateFactory[pTtype] = [this]() -> BaseState*
+	void RegisterState(const StateType& pType)
+	{
+		_stateFactory[pType] = [this]() -> BaseState*
 		{
 			return new T(this);
 		};
 	}
+
 
 	// Members.
 	SharedContext* _shared;
