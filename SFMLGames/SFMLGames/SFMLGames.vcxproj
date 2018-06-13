@@ -126,6 +126,7 @@
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="State_Intro.cpp" />
     <ClCompile Include="State_Main.cpp" />
+    <ClCompile Include="State_Paused.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

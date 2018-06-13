@@ -81,6 +81,9 @@
     <ClCompile Include="State_Main.cpp">
       <Filter>Source Files\Utilities\StateManager</Filter>
     </ClCompile>
+    <ClCompile Include="State_Paused.cpp">
+      <Filter>Source Files\Utilities\StateManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">

@@ -17,7 +17,7 @@ public:
 	void update(const sf::Time& pTime);
 	void draw();
 
-	void unpause(EventDetails& pDetails);
+	void unpause(EventDetails* pDetails);
 
 private:
 	sf::Font _font;
