@@ -14,8 +14,8 @@ void State_Game::onCreate()
 	_increment = sf::Vector2f(400.0f, 400.0f);
 
 	EventManager* evMgr = _stateMgr->GetContext()->_eventManager;
-	evMgr->addCallBack(StateType::Game, "Key_Escape", &State_Game::mainMenu, this);
-	evMgr->addCallBack(StateType::Game, "Key_P", &State_Game::pause, this);
+	evMgr->addCallback(StateType::Game, "Key_Escape", &State_Game::mainMenu, this);
+	evMgr->addCallback(StateType::Game, "Key_P", &State_Game::pause, this);
 }
 
 void State_Game::onDestroy() 

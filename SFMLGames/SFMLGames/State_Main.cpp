@@ -53,7 +53,7 @@ void State_MainMenu::onCreate()
 	}
 
 	auto eventManager = _stateMgr->GetContext()->_eventManager;
-	eventManager->addCallBack(StateType::MainMenu, "Mouse_Left", &State_MainMenu::mouseClick, this);;
+	eventManager->addCallback(StateType::MainMenu, "Mouse_Left", &State_MainMenu::mouseClick, this);;
 }
 
 void State_MainMenu::onDestroy()

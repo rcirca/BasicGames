@@ -10,14 +10,14 @@ GameMushroom::GameMushroom() : _window("Chapter 4", sf::Vector2u(800, 600))
 	_sprite.setOrigin(_texture.getSize().x / 2, _texture.getSize().y / 2);
 	_sprite.setPosition(0, 0);
 
-	_window.getEventManager()->addCallBack(StateType(0), "Move", &GameMushroom::moveSprite, this);
+	_window.getEventManager()->addCallback(StateType(0), "Move", &GameMushroom::moveSprite, this);
 }
 
 GameMushroom::~GameMushroom() {}
 
 void GameMushroom::moveSprite(EventDetails* l_details) 
 {
-	sf::Vector2i mousepos = _window.getEventManager()->getMousePos(_window.getRenderWindow());
+	sf::Vector2i mousepos = _window.getEventManager()->getMousePosition(_window.getRenderWindow());
 	_sprite.setPosition(mousepos.x, mousepos.y);
 	std::cout << "Moving sprite to: " << mousepos.x << ":" << mousepos.y << std::endl;
 }

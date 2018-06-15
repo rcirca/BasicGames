@@ -32,7 +32,7 @@ void State_Intro::onCreate()
 	_text.setPosition(windowSize.x / 2.0f, windowSize.y / 2.0f);
 
 	auto eventManager = _stateMgr->GetContext()->_eventManager;
-	eventManager->addCallBack(StateType::Intro, "Intro_Continue", &State_Intro::continueWith, this);
+	eventManager->addCallback(StateType::Intro, "Intro_Continue", &State_Intro::continueWith, this);
 }
 
 void State_Intro::onDestroy()

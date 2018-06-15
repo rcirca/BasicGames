@@ -30,7 +30,7 @@ void State_Paused::onCreate()
 	_rect.setFillColor(sf::Color(0, 0, 0, 150));
 
 	auto eventManager = _stateMgr->GetContext()->_eventManager;
-	eventManager->addCallBack(StateType::Paused, "Key_P", &State_Paused::unpause, this);
+	eventManager->addCallback(StateType::Paused, "Key_P", &State_Paused::unpause, this);
 
 }
 
