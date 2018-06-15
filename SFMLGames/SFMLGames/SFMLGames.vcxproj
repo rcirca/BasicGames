@@ -147,6 +147,7 @@
     <ClInclude Include="State_Main.h" />
     <ClInclude Include="State_Paused.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

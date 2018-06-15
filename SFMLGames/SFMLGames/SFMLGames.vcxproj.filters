@@ -22,9 +22,6 @@
     <Filter Include="Source Files\SnakeSource">
       <UniqueIdentifier>{6938c5cf-4705-4b41-9bdb-54e6d71b7e67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\SnakeHeader">
-      <UniqueIdentifier>{0da48a44-f7ca-4c8e-8b1c-1e7a6d8ae03b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Utilities">
       <UniqueIdentifier>{c60c6950-7870-4e37-9154-bb4572d49195}</UniqueIdentifier>
     </Filter>
@@ -46,8 +43,20 @@
     <Filter Include="Source Files\Utilities\StateManager">
       <UniqueIdentifier>{bba96af1-ffff-43b5-8c94-891f59b5dceb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\StateGameTest">
-      <UniqueIdentifier>{bb08a136-c7a7-419c-b064-323f5f8a8396}</UniqueIdentifier>
+    <Filter Include="Header Files\Games">
+      <UniqueIdentifier>{4a216cc6-8000-4d48-966a-da651e087bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Games\Snake">
+      <UniqueIdentifier>{ef00f778-f84d-440b-941d-c6f2def3e88c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Games\Snake\SnakeHeader">
+      <UniqueIdentifier>{0da48a44-f7ca-4c8e-8b1c-1e7a6d8ae03b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Games\Mushroom">
+      <UniqueIdentifier>{5224a29a-c405-49ca-8b87-1454a8c81baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Games\StateGame">
+      <UniqueIdentifier>{3712291f-3f5d-4155-bb4c-807c79a94762}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,23 +107,17 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TextBox.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Snake.h">
-      <Filter>Header Files\SnakeHeader</Filter>
+      <Filter>Header Files\Games\Snake\SnakeHeader</Filter>
     </ClInclude>
     <ClInclude Include="SnakeWorld.h">
-      <Filter>Header Files\SnakeHeader</Filter>
+      <Filter>Header Files\Games\Snake\SnakeHeader</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>Header Files\Utilities\Event Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMushroom.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
       <Filter>Header Files\Utilities\StateManager</Filter>
@@ -137,8 +140,17 @@
     <ClInclude Include="State_Paused.h">
       <Filter>Header Files\Utilities\StateManager</Filter>
     </ClInclude>
+    <ClInclude Include="GameMushroom.h">
+      <Filter>Header Files\Games\Mushroom</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Games\Snake</Filter>
+    </ClInclude>
     <ClInclude Include="StateGameTest.h">
-      <Filter>Header Files\StateGameTest</Filter>
+      <Filter>Header Files\Games\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
