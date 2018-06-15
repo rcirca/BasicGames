@@ -6,7 +6,7 @@ Window::Window()
 	setup("Window", sf::Vector2u(640, 480));
 }
 
-Window::Window(const std::string pTitle, const sf::Vector2u& pSize) : _eventManager("configs/snakeKeys.cfg.txt")
+Window::Window(const std::string pTitle, const sf::Vector2u& pSize) : _eventManager()
 {
 	setup(pTitle, pSize);
 }

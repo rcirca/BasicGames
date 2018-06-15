@@ -17,13 +17,13 @@ void State_Intro::onCreate()
 
 	auto windowSize = _stateMgr->GetContext()->_wind->getRenderWindow()->getSize();
 
-	_introTexture.loadFromFile("intro.png");
+	_introTexture.loadFromFile("Images/intro.png");
 	_introSprite.setTexture(_introTexture);
 	_introSprite.setOrigin(_introTexture.getSize().x / 2.0f, _introTexture.getSize().y / 2.0f);
 
 	_introSprite.setPosition(windowSize.x / 2.0f, 0);
 
-	_font.loadFromFile("arial.ttf");
+	_font.loadFromFile("font/arial.ttf");
 	_text.setFont(_font);
 	_text.setString({ "Press Space to continue" });
 	_text.setCharacterSize(15);

@@ -1,13 +1,13 @@
 #include "Game.h"
 #include "GameMushroom.h"
-
+#include "StateGameTest.h"
 void main(int argc, void** argv)
 {
-	Game game;
+	StateGameTest game;
 	while(!game.getWindow()->isDone())
 	{
 		game.update();
 		game.render();
-		game.restartClock();
+		game.lateUpdate();
 	}
 }

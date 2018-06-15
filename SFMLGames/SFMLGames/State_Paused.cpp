@@ -13,7 +13,7 @@ State_Paused::~State_Paused()
 void State_Paused::onCreate()
 {
 	setTransparent(true);
-	_font.loadFromFile("arial.ttf");
+	_font.loadFromFile("font/arial.ttf");
 	_text.setFont(_font);
 	_text.setString(sf::String("Paused"));
 	_text.setCharacterSize(14);

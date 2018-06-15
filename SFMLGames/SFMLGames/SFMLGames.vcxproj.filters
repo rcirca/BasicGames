@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Utilities\StateManager">
       <UniqueIdentifier>{bba96af1-ffff-43b5-8c94-891f59b5dceb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\StateGameTest">
+      <UniqueIdentifier>{bb08a136-c7a7-419c-b064-323f5f8a8396}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="State_Game.cpp">
       <Filter>Source Files\Utilities\StateManager</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameTest.cpp">
+      <Filter>Source Files\Games</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="State_Paused.h">
       <Filter>Header Files\Utilities\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameTest.h">
+      <Filter>Header Files\StateGameTest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

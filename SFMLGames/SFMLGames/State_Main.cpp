@@ -13,7 +13,7 @@ State_MainMenu::~State_MainMenu()
 
 void State_MainMenu::onCreate()
 {
-	_font.loadFromFile("arial.ttf");
+	_font.loadFromFile("font/arial.ttf");
 	_text.setFont(_font);
 	_text.setString(sf::String("Main Menu:"));
 	_text.setCharacterSize(18);
