@@ -5,11 +5,6 @@ EventManager::EventManager() : _hasFocus(true)
 	loadBindings();
 }
 
-EventManager::EventManager(std::string pCfgFile) : _hasFocus(true)
-{
-	loadBindings(pCfgFile);
-}
-
 EventManager::~EventManager()
 {
 	for(auto& itr : _bindings)
@@ -39,14 +34,20 @@ bool EventManager::removeBindings(std::string pName)
 	return true;
 }
 
+void EventManager::setCurrentState(StateType pType)
+{
+	_currentStateType = pType;
+}
+
+
 void EventManager::handleEvent(sf::Event& pEvent)
 {
 	for(auto& bindingItr : _bindings)
 	{
-		auto* bind = bindingItr.second;
+		auto bind = bindingItr.second;
 		for(auto& eventItr : bind->_events)
 		{
-			auto sfmlEvent = static_cast<EventType>(pEvent.type);
+			auto sfmlEvent = (EventType)(pEvent.type);
 			if (eventItr.first != sfmlEvent)
 				continue;
 
@@ -92,16 +93,13 @@ void EventManager::handleEvent(sf::Event& pEvent)
 	}
 }
 
-void EventManager::loadBindings(std::string pCfgFile)
+void EventManager::loadBindings()
 {
 	std::string delimiter = ":";
 
 	std::ifstream bindings;
-	
-	if (pCfgFile.empty()) 
-		bindings.open("configs/keys.cfg.txt");
-	else 
-		bindings.open(pCfgFile);
+
+	bindings.open("configs/keys.cfg.txt");
 
 	if (!bindings.is_open()) 
 	{ 
@@ -143,12 +141,6 @@ void EventManager::loadBindings(std::string pCfgFile)
 	}
 	bindings.close();
 }
-
-void EventManager::setCurrentState(StateType pType)
-{
-	_currentStateType = pType;
-}
-
 void EventManager::setFocus(const bool& pFocus)
 {
 	_hasFocus = pFocus;
@@ -187,7 +179,6 @@ void EventManager::update()
 			case(EventType::Joystick):
 				// Up for expansion.
 				break;
-			default: ;
 			}
 		}
 
@@ -197,6 +188,13 @@ void EventManager::update()
 			auto otherCallbacks = _callbacks.find(StateType(0));
 
 			if (stateCallbacks != _callbacks.end())
+			{
+				auto callItr = stateCallbacks->second.find(bind->_name);
+				if (callItr != stateCallbacks->second.end())
+					callItr->second(&bind->_details);
+			}
+
+			if(otherCallbacks != _callbacks.end())
 			{
 				auto callItr = otherCallbacks->second.find(bind->_name);
 				if (callItr != otherCallbacks->second.end())

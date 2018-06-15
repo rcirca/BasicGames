@@ -34,7 +34,6 @@ struct EventInfo
 	};
 };
 
-using Events = std::vector<std::pair<EventType, EventInfo>>;
 
 struct EventDetails
 {
@@ -58,6 +57,9 @@ struct EventDetails
 		_keyCode = -1;
 	}
 };
+
+
+using Events = std::vector<std::pair<EventType, EventInfo>>;
 
 struct Binding
 {
@@ -85,7 +87,6 @@ class EventManager
 {
 public:
 	EventManager();
-	EventManager(std::string pCfgFile);
 	~EventManager();
 
 	bool addBinding(Binding *pBinding);
@@ -95,7 +96,7 @@ public:
 	void setFocus(const bool& pFocus);
 
 	template<class T> // has to be defined in the header
-	bool addCallBack(StateType pState, const std::string& pName,
+	bool addCallback(StateType pState, const std::string& pName,
 		void(T::*pFunc)(EventDetails*), T* pInstance)
 	{
 		auto itr = _callbacks.emplace(pState, CallBackContainer()).first;
@@ -111,18 +112,21 @@ public:
 		auto itr2 = itr->second.find(pName);
 		if (itr2 == itr->second.end())
 			return false;
+
+		itr->second.erase(pName);
+		return true;
 	}
 
 	void handleEvent(sf::Event& pEvent);
 	void update();
 
-	sf::Vector2i getMousePos(sf::RenderWindow* pRenderWindow = nullptr)
+	sf::Vector2i getMousePosition(sf::RenderWindow* pRenderWindow = nullptr)
 	{
 		return (pRenderWindow ? sf::Mouse::getPosition(*pRenderWindow) : sf::Mouse::getPosition());
 	}
 
 private:
-	void loadBindings(std::string pCfgFile = "");
+	void loadBindings();
 
 	StateType _currentStateType;
 	Bindings _bindings;
