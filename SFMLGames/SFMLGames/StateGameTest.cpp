@@ -8,7 +8,7 @@ StateGameTest::StateGameTest() : _window("TILTED", sf::Vector2u(800, 600)), _sta
 
 	_context._wind = &_window;
 	_context._eventManager = _window.getEventManager();
-	_stateManager.SwitchTo(StateType::Intro);
+	_stateManager.switchTo(StateType::Intro);
 }
 
 StateGameTest::~StateGameTest()
@@ -35,19 +35,19 @@ Window* StateGameTest::getWindow()
 void StateGameTest::update()
 {
 	_window.update();
-	_stateManager.Update(_elapsed);
+	_stateManager.update(_elapsed);
 }
 
 void StateGameTest::render()
 {
 	_window.beginDraw();
-	_stateManager.Draw();
+	_stateManager.draw();
 	_window.endDraw();
 }
 
 void StateGameTest::lateUpdate()
 {
-	_stateManager.ProcessRequests();
+	_stateManager.processRequests();
 	restartClock();
 }
 

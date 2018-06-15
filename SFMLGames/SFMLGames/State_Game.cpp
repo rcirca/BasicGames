@@ -13,21 +13,21 @@ void State_Game::onCreate()
 	_sprite.setPosition(0, 0);
 	_increment = sf::Vector2f(400.0f, 400.0f);
 
-	EventManager* evMgr = _stateMgr->GetContext()->_eventManager;
+	EventManager* evMgr = _stateMgr->getContext()->_eventManager;
 	evMgr->addCallback(StateType::Game, "Key_Escape", &State_Game::mainMenu, this);
 	evMgr->addCallback(StateType::Game, "Key_P", &State_Game::pause, this);
 }
 
 void State_Game::onDestroy() 
 {
-	EventManager* evMgr = _stateMgr->GetContext()->_eventManager;
+	EventManager* evMgr = _stateMgr->getContext()->_eventManager;
 	evMgr->removeCallback(StateType::Game, "Key_Escape");
 	evMgr->removeCallback(StateType::Game, "Key_P");
 }
 
 void State_Game::update(const sf::Time& l_time) 
 {
-	sf::Vector2u l_windSize = _stateMgr->GetContext()->_wind->getWindowSize();
+	sf::Vector2u l_windSize = _stateMgr->getContext()->_wind->getWindowSize();
 	sf::Vector2u l_textSize = _texture.getSize();
 
 	if ((_sprite.getPosition().x > l_windSize.x - l_textSize.x && _increment.x > 0) ||
@@ -48,17 +48,17 @@ void State_Game::update(const sf::Time& l_time)
 
 void State_Game::draw() 
 {
-	_stateMgr->GetContext()->_wind->getRenderWindow()->draw(_sprite);
+	_stateMgr->getContext()->_wind->getRenderWindow()->draw(_sprite);
 }
 
 void State_Game::mainMenu(EventDetails* l_details) 
 {
-	_stateMgr->SwitchTo(StateType::MainMenu);
+	_stateMgr->switchTo(StateType::MainMenu);
 }
 
 void State_Game::pause(EventDetails* l_details) 
 {
-	_stateMgr->SwitchTo(StateType::Paused);
+	_stateMgr->switchTo(StateType::Paused);
 }
 
 void State_Game::activate() {}

@@ -52,19 +52,19 @@ void State_MainMenu::onCreate()
 		_labels[i].setPosition(buttonPosition);
 	}
 
-	auto eventManager = _stateMgr->GetContext()->_eventManager;
+	auto eventManager = _stateMgr->getContext()->_eventManager;
 	eventManager->addCallback(StateType::MainMenu, "Mouse_Left", &State_MainMenu::mouseClick, this);;
 }
 
 void State_MainMenu::onDestroy()
 {
-	auto eventManager = _stateMgr->GetContext()->_eventManager;
+	auto eventManager = _stateMgr->getContext()->_eventManager;
 	eventManager->removeCallback(StateType::MainMenu, "Mouse_Left");
 }
 
 void State_MainMenu::activate()
 {
-	if(_stateMgr->HasState(StateType::Game) && _labels[0].getString() == "Play")
+	if(_stateMgr->hasState(StateType::Game) && _labels[0].getString() == "Play")
 	{
 		_labels[0].setString(sf::String("Resume"));
 		auto rect = _labels[0].getLocalBounds();
@@ -74,7 +74,7 @@ void State_MainMenu::activate()
 
 void State_MainMenu::draw()
 {
-	auto window = _stateMgr->GetContext()->_wind->getRenderWindow();
+	auto window = _stateMgr->getContext()->_wind->getRenderWindow();
 	window->draw(_text);
 	for(auto i = 0; i < 3; ++i)
 	{
@@ -98,10 +98,10 @@ void State_MainMenu::mouseClick(EventDetails* pDetails)
 			&& mousePos.y <= _rects[i].getPosition().y + halfY)
 		{
 			if (i == 0)
-				_stateMgr->SwitchTo(StateType::Game);
+				_stateMgr->switchTo(StateType::Game);
 			else if (i == 1) {}
 			else if (i == 2)
-				_stateMgr->GetContext()->_wind->close();
+				_stateMgr->getContext()->_wind->close();
 		}
 	}
 }

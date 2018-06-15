@@ -23,24 +23,24 @@ public:
 	StateManager(SharedContext* pShared);
 	~StateManager();
 
-	void Update(const sf::Time& pTime);
-	void Draw();
+	void update(const sf::Time& pTime);
+	void draw();
 
-	void ProcessRequests();
+	void processRequests();
 
-	SharedContext* GetContext();
-	bool HasState(const StateType& pType);
+	SharedContext* getContext();
+	bool hasState(const StateType& pType);
 
-	void SwitchTo(const StateType& pType);
-	void Remove(const StateType& pType);
+	void switchTo(const StateType& pType);
+	void remove(const StateType& pType);
 
 private:
 	// Methods.
-	void CreateState(const StateType& pType);
-	void RemoveState(const StateType& pType);
+	void createState(const StateType& pType);
+	void removeState(const StateType& pType);
 
 	template<class T>
-	void RegisterState(const StateType& pType)
+	void registerState(const StateType& pType)
 	{
 		_stateFactory[pType] = [this]() -> BaseState*
 		{

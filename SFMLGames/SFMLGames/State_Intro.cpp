@@ -15,7 +15,7 @@ void State_Intro::onCreate()
 {
 	_timePassed = 0.0f;
 
-	auto windowSize = _stateMgr->GetContext()->_wind->getRenderWindow()->getSize();
+	auto windowSize = _stateMgr->getContext()->_wind->getRenderWindow()->getSize();
 
 	_introTexture.loadFromFile("Images/intro.png");
 	_introSprite.setTexture(_introTexture);
@@ -31,13 +31,13 @@ void State_Intro::onCreate()
 	_text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
 	_text.setPosition(windowSize.x / 2.0f, windowSize.y / 2.0f);
 
-	auto eventManager = _stateMgr->GetContext()->_eventManager;
+	auto eventManager = _stateMgr->getContext()->_eventManager;
 	eventManager->addCallback(StateType::Intro, "Intro_Continue", &State_Intro::continueWith, this);
 }
 
 void State_Intro::onDestroy()
 {
-	auto eventManager = _stateMgr->GetContext()->_eventManager;
+	auto eventManager = _stateMgr->getContext()->_eventManager;
 	eventManager->removeCallback(StateType::Intro, "Intro_Continue");
 }
 
@@ -53,7 +53,7 @@ void State_Intro::update(const sf::Time& pTime)
 
 void State_Intro::draw()
 {
-	auto window = _stateMgr->GetContext()->_wind->getRenderWindow();
+	auto window = _stateMgr->getContext()->_wind->getRenderWindow();
 
 	window->draw(_introSprite);
 	if (_timePassed >= 5.0f)
@@ -64,8 +64,8 @@ void State_Intro::continueWith(EventDetails* pDetails)
 {
 	if(_timePassed >= 5.0f)
 	{
-		_stateMgr->SwitchTo(StateType::MainMenu);
-		_stateMgr->Remove(StateType::Intro);
+		_stateMgr->switchTo(StateType::MainMenu);
+		_stateMgr->remove(StateType::Intro);
 	}
 }
 

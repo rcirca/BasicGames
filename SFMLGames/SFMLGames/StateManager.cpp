@@ -2,10 +2,10 @@
 
 StateManager::StateManager(SharedContext* pShared) : _shared(pShared)
 {
-	RegisterState<State_Intro>(StateType::Intro);
-	RegisterState<State_MainMenu>(StateType::MainMenu);
-	RegisterState<State_Game>(StateType::Game);
-	RegisterState<State_Paused>(StateType::Paused);
+	registerState<State_Intro>(StateType::Intro);
+	registerState<State_MainMenu>(StateType::MainMenu);
+	registerState<State_Game>(StateType::Game);
+	registerState<State_Paused>(StateType::Paused);
 }
 
 StateManager::~StateManager()
@@ -17,7 +17,7 @@ StateManager::~StateManager()
 	}
 }
 
-void StateManager::Update(const sf::Time& pTime)
+void StateManager::update(const sf::Time& pTime)
 {
 	if (_states.empty())
 		return;
@@ -42,7 +42,7 @@ void StateManager::Update(const sf::Time& pTime)
 		_states.back().second->update(pTime);
 }
 
-void StateManager::Draw()
+void StateManager::draw()
 {
 	if (_states.empty())
 		return;
@@ -68,21 +68,21 @@ void StateManager::Draw()
 		_states.back().second->draw();
 }
 
-void StateManager::ProcessRequests()
+void StateManager::processRequests()
 {
 	while (_toRemove.begin() != _toRemove.end())
 	{
-		RemoveState(*_toRemove.begin());
+		removeState(*_toRemove.begin());
 		_toRemove.erase(_toRemove.begin());
 	}
 }
 
-SharedContext* StateManager::GetContext()
+SharedContext* StateManager::getContext()
 {
 	return _shared;
 }
 
-bool StateManager::HasState(const StateType & pType)
+bool StateManager::hasState(const StateType & pType)
 {
 	for (auto itr = _states.begin(); itr != _states.end(); ++itr)
 	{
@@ -98,7 +98,7 @@ bool StateManager::HasState(const StateType & pType)
 	return false;
 }
 
-void StateManager::SwitchTo(const StateType & pType)
+void StateManager::switchTo(const StateType & pType)
 {
 	_shared->_eventManager->setCurrentState(pType);
 
@@ -119,16 +119,16 @@ void StateManager::SwitchTo(const StateType & pType)
 	if (!_states.empty())
 		_states.back().second->deactivate();
 
-	CreateState(pType);
+	createState(pType);
 	_states.back().second->activate();
 }
 
-void StateManager::Remove(const StateType & pType)
+void StateManager::remove(const StateType & pType)
 {
 	_toRemove.push_back(pType);
 }
 
-void StateManager::CreateState(const StateType & pType)
+void StateManager::createState(const StateType & pType)
 {
 	auto newState = _stateFactory.find(pType);
 	if (newState == _stateFactory.end())
@@ -139,7 +139,7 @@ void StateManager::CreateState(const StateType & pType)
 	state->onCreate();
 }
 
-void StateManager::RemoveState(const StateType & pType)
+void StateManager::removeState(const StateType & pType)
 {
 	for (auto itr = _states.begin(); itr != _states.end(); ++itr)
 	{
