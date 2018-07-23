@@ -32,6 +32,7 @@ public:
 	bool isFocused() const;
 	EventManager* getEventManager();
 	void close(EventDetails* pDetails = nullptr);
+	sf::FloatRect getViewSpace();
 
 private:
 	void setup(const std::string& pTitle, const sf::Vector2u& pSize);

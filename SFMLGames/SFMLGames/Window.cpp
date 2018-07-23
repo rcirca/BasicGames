@@ -119,3 +119,13 @@ void Window::close(EventDetails* pDetails)
 {
 	_isDone = true;
 }
+
+sf::FloatRect Window::getViewSpace()
+{
+	auto viewCenter = _window.getView().getCenter();
+	auto viewSize = _window.getView().getSize();
+	sf::Vector2f viewSizeHalf(viewSize.x / 2, viewSize.y / 2);
+	sf::FloatRect viewSpace(viewCenter - viewSizeHalf, viewSize);
+	return viewSpace;
+}
+

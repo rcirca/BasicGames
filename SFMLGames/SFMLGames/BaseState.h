@@ -25,8 +25,11 @@ public:
 	bool isTranscendent()const { return _transcendent; }
 	StateManager* getStateManager() { return _stateMgr; }
 
+	sf::View& getView() { return _view; }
+
 protected:
 	StateManager* _stateMgr;
 	bool _transparent;
 	bool _transcendent;
+	sf::View _view;
 };

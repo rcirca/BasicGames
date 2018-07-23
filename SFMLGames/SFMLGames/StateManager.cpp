@@ -62,7 +62,10 @@ void StateManager::draw()
 		}
 
 		for (; itr != _states.end(); ++itr)
+		{
+			_shared->_wind->getRenderWindow()->setView(itr->second->getView());
 			itr->second->draw();
+		}
 	}
 	else
 		_states.back().second->draw();
@@ -112,6 +115,7 @@ void StateManager::switchTo(const StateType & pType)
 			_states.erase(itr);
 			_states.emplace_back(tmpType, tmpState);
 			tmpState->activate();
+			_shared->_wind->getRenderWindow()->setView(tmpState->getView());
 			return;
 		}
 	}
@@ -121,6 +125,7 @@ void StateManager::switchTo(const StateType & pType)
 
 	createState(pType);
 	_states.back().second->activate();
+	_shared->_wind->getRenderWindow()->setView(_states.back().second->getView());
 }
 
 void StateManager::remove(const StateType & pType)
@@ -135,6 +140,7 @@ void StateManager::createState(const StateType & pType)
 		return;
 
 	auto state = newState->second();
+	state->_view = _shared->_wind->getRenderWindow()->getDefaultView();
 	_states.emplace_back(pType, state);
 	state->onCreate();
 }
