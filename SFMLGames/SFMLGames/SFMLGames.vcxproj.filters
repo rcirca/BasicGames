@@ -58,6 +58,9 @@
     <Filter Include="Header Files\Games\StateGame">
       <UniqueIdentifier>{3712291f-3f5d-4155-bb4c-807c79a94762}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities\Resource Manager">
+      <UniqueIdentifier>{71537753-2963-4f50-8356-a0f1ab009937}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Utilities.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files\Utilities\Resource Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

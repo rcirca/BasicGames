@@ -137,6 +137,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMushroom.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SharedContext.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="SnakeWorld.h" />
