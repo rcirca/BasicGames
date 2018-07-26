@@ -61,6 +61,9 @@
     <Filter Include="Header Files\Utilities\Resource Manager">
       <UniqueIdentifier>{71537753-2963-4f50-8356-a0f1ab009937}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utilities\Texture Manager">
+      <UniqueIdentifier>{100405fd-4695-4367-884a-0881716990c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\Utilities\Resource Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\Utilities\Texture Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

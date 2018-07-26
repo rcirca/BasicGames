@@ -148,6 +148,7 @@
     <ClInclude Include="State_Main.h" />
     <ClInclude Include="State_Paused.h" />
     <ClInclude Include="TextBox.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
